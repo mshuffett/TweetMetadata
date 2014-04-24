@@ -4,10 +4,11 @@ import tarfile
 from tweet import Tweet
 from collection import Collection
 
+
 def process_tar(path):
     c = Collection()
     with tarfile.open(path, mode='r:gz') as tar:
-        member = tar.getmembers()[0] # assume single file tar
+        member = tar.getmembers()[0]  # assume single file tar
         f = tar.extractfile(member)
         tsv = csv.reader(f, delimiter='\t')
         for i, row in enumerate(tsv):
